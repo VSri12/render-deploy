@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quality Prediction</title>
+    <style>
+        /* Reset Default Margins */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2c3e50;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links li {
+            display: inline;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Search Box */
+        .search-box input {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            padding: 5px 10px;
+            background: #4b6cb7;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive Navbar for Small Screens */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .search-box {
+                margin-top: 10px;
+            }
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        /* Form Container */
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px; /* Compact form size */
+            margin-top: 20px;
+        }
+
+        /* Form Title */
+        h1 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Input Fields */
+        .form-group {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 13px;
+            transition: 0.3s;
+            height: 28px; /* Reduced height */
+        }
+
+        input:focus {
+            border-color: #4b6cb7;
+            box-shadow: 0 0 4px rgba(75, 108, 183, 0.5);
+            outline: none;
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            background: #4b6cb7;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #2c3e50;
+        }
+
+        /* Prediction Result */
+        h2 {
+            color: #d63031;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
+<!--        #<a href="index.html" class="logo">Water Quality</a>-->
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="water_quality.html">Water Quality</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Form Section -->
+    <div class="container">
+        <h1>Water Quality Prediction</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="ph">pH:</label>
+                <input type="number" id="ph" name="ph" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Hardness">Hardness:</label>
+                <input type="number" id="Hardness" name="Hardness" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Solids">Solids:</label>
+                <input type="number" id="Solids" name="Solids" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Chloramines">Chloramines:</label>
+                <input type="number" id="Chloramines" name="Chloramines" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Sulfate">Sulfate:</label>
+                <input type="number" id="Sulfate" name="Sulfate" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Conductivity">Conductivity:</label>
+                <input type="number" id="Conductivity" name="Conductivity" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Organic_carbon">Organic Carbon:</label>
+                <input type="number" id="Organic_carbon" name="Organic_carbon" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Trihalomethanes">Trihalomethanes:</label>
+                <input type="number" id="Trihalomethanes" name="Trihalomethanes" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Turbidity">Turbidity:</label>
+                <input type="number" id="Turbidity" name="Turbidity" step="0.1" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if result %}
+            <h2>{{ result }} for drinking</h2>
+        {% endif %}
+    </div>
+
+</body>
+</html>
